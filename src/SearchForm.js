@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 /**
  *  SearchForm lets user search for some information by showing a form that
  *  processes a user-input search term.
@@ -16,8 +18,28 @@ function SearchForm({ onSubmit }) {
   console.log("SearchForm rendered, onSubmit prop:", onSubmit);
   console.log("onSubmit should be undefined for now");
 
+  const [formData, setFormData] = useState("");
+
+  console.log("searchForm formData:", formData);
+
+  function handleChange(evt){
+    setFormData(evt.target.value);
+  }
+
+  function handleSubmit(evt){
+    evt.preventDefault();
+    onSubmit(formData); //TODO: Revisit once we've actually written this function
+  }
+
   return (
-    <p>This will be a search form. You will be able to look for things!</p>
+    <form className="SearchForm" onSubmit={handleSubmit}>
+      <input
+        value={formData}
+        onChange={handleChange}
+        placeholder="Enter search term..."
+      />
+      <button>Submit</button>
+    </form>
   );
 }
 

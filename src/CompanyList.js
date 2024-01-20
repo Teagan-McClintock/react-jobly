@@ -1,5 +1,7 @@
 import SearchForm from "./SearchForm";
 import CompanyCardList from "./CompanyCardList";
+import { useState } from "react";
+import JoblyApi from "./api";
 
 /**CompanyList does the following:
  * - renders SearchForm
@@ -20,11 +22,27 @@ import CompanyCardList from "./CompanyCardList";
 
 function CompanyList() {
   console.log("CompanyList rendered, took no props");
+  const [companies, setCompanies] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchedTerm, setSearchedTerm] = useState("");
+
+  function fetchSearchResults() {
+    async function getResults() {
+      const companies = await JoblyApi.searchCompanies(searchedTerm);
+      setCompanies(companies);
+      setIsLoading(false);
+    }
+    getResults();
+  }
+
+  useEffect(fetchSearchResults, [searchedTerm]);
+
+  if (isLoading === true) return <div>Loading...</div>;
 
   return (
     <div className="companyList">
       <SearchForm />
-      <CompanyCardList />
+      <CompanyCardList companies={companies}/>
     </div>
   );
 

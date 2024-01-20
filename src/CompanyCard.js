@@ -10,13 +10,17 @@
  *
  *  Renders:
  *    CompanyCardList -> CompanyCard
- *
  */
+
 function CompanyCard({ company }) {
   console.log("CompanyCard rendered, company:", company);
 
   return (
-    <p>A CompanyCard rendered. Yay!</p>
+    <div className="CompanyCard">
+      <h3>{company.name}</h3>
+      <img src={company.logoUrl} alt={company.name}/>
+      <p>{company.description}</p>
+    </div>
   );
 }
 
