@@ -8,8 +8,9 @@
  *  Props: none
  *
  *  States:
- *    - company, an object containing information about a company
- *    - jobs, an array of objects about jobs
+ *    - company, an object {handle, name, description, numEmployees, logoUrl}
+ *    - jobs, an array
+ *        [{id, title, salary, equity, companyHandle, companyName},...]
  *    - isLoading, a boolean
  *
  *  Renders:
@@ -19,3 +20,5 @@
 function CompanyDetail() {
 
 }
+
+export default CompanyDetail;

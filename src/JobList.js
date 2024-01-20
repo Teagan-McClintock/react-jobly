@@ -7,7 +7,7 @@
  *
  *  Props: none
  *
- *  States: jobs, isLoading, searachedTerm
+ *  States: jobs, isLoading, searchedTerm
  *
  *  Renders:
  *    RoutesList -> JobList -> JobCardList
@@ -17,3 +17,5 @@
 function JobList() {
 
 }
+
+export default JobList;
