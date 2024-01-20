@@ -18,7 +18,7 @@ function Navigation() {
       <Link to={"/companies"}>Companies</Link>
       <Link to={"/jobs"}>Jobs</Link>
     </header>
-  ) // use NavLink instead of Link here
+  ) // use NavLink instead of Link here (come back to this when we style)
 }
 
 export default Navigation;

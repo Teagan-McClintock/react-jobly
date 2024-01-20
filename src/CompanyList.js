@@ -22,7 +22,7 @@ function CompanyList() {
   console.log("CompanyList rendered, took no props");
 
   return (
-    <div>
+    <div className="companyList">
       <SearchForm />
       <CompanyCardList />
     </div>

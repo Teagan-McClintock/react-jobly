@@ -17,7 +17,7 @@ function CompanyCardList({ companies }) {
 
 
   return (
-    <div>
+    <div className="CompanyCard">
       <CompanyCard />
     </div>
   );

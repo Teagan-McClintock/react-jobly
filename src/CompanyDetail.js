@@ -24,7 +24,7 @@ function CompanyDetail() {
   console.log("CompanyDetail rendered, took no props");
 
   return (
-    <div>
+    <div className="CompanyDetail">
       <p>Details on a company!</p>
       <JobCardList jobs={[{id: 3}]}/>
     </div>
