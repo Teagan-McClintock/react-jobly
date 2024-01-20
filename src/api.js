@@ -69,12 +69,14 @@ class JoblyApi {
   }
 
   /** Search jobs that contain searchTerm */
+
   static async searchJobs(searchTerm) {
     let res = await this.request(`jobs?title=${searchTerm}`);
     return res.jobs;
   }
 
   /** Search companies that contain searchTerm */
+
   static async searchCompanies(searchTerm) {
     let res = await this.request(`companies?nameLike=${searchTerm}`);
     return res.companies;

@@ -1,4 +1,4 @@
-
+import JobCardList from "./JobCardList";
 
 /**
  *  JobList does the following:
@@ -7,18 +7,26 @@
  *
  *  Props: none
  *
- *  States: jobs, isLoading, searchedTerm
+ *  States:
+ *  - jobs, an array
+ *        [{id, title, salary, equity, companyHandle, companyName},...]
+ *  - isLoading, a boolean
+ *  - searchedTerm, a string
  *
  *  Renders:
  *    RoutesList -> JobList -> JobCardList
  *    RoutesList -> JobList -> SearchForm
  *
  */
+
 function JobList() {
   console.log("JobList rendered, took no props");
 
   return (
-    <p>Jobs!</p>
+    <div className="JobList">
+      <SearchForm />
+      <JobCardList jobs={[{id: 1}]} />
+    </div>
   );
 
 }

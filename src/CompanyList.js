@@ -1,6 +1,6 @@
 /**CompanyList does the following:
  * - renders SearchForm
- * - displays information about companies based on what is searched for
+ * - make fetch request to get information about searched term
  *
  * props: none
  *

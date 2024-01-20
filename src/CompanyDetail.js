@@ -8,7 +8,8 @@
  *  Props: none
  *
  *  States:
- *    - company, an object {handle, name, description, numEmployees, logoUrl}
+ *    - company, an object
+ *        {handle, name, description, numEmployees, logoUrl, jobs}
  *    - jobs, an array
  *        [{id, title, salary, equity, companyHandle, companyName},...]
  *    - isLoading, a boolean
@@ -17,6 +18,7 @@
  *    RoutesList -> CompanyDetail -> JobCardList
  *
  */
+
 function CompanyDetail() {
   console.log("CompanyDetail rendered, took no props");
 
