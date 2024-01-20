@@ -32,8 +32,10 @@ function CompanyList() {
    */
   function updateSearchTerm(term) {
     console.log("term arrived in CompanyList", term);
-    setIsLoading(true); // Note to self: true because we're triggering API call
-    setSearchedTerm(term);
+    if (term !== searchedTerm) {
+      setSearchedTerm(term);
+      setIsLoading(true); // Note to self: true because we're triggering API call
+    }
   }
 
   /** fetchSearchResults calls getResults async function.
@@ -63,12 +65,17 @@ function CompanyList() {
   console.log("***this is companies", companies);
   useEffect(fetchSearchResults, [searchedTerm]);
 
-  if (isLoading === true) return <div>Loading...</div>;
+  // if (isLoading === true) return <div>Loading...</div>;
 
   return (
     <div className="companyList">
       <SearchForm onSubmit={updateSearchTerm}/>
-      <CompanyCardList companies={companies}/>
+      <p>{searchedTerm.length < 1 && isLoading === false
+        ? null
+        : `Showing results for ${searchedTerm}`}</p>
+      {isLoading === true
+        ? <div>Loading...</div>
+        : <CompanyCardList companies={companies}/>}
     </div>
   );
 

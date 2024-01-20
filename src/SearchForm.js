@@ -31,7 +31,6 @@ function SearchForm({ onSubmit }) {
     console.log("submitting query, here is formData:", formData);
     onSubmit(formData);
     setFormData("");
-    // revert formData to original state TODO: test this functionality later
   }
 
   return (
@@ -42,7 +41,7 @@ function SearchForm({ onSubmit }) {
         onChange={handleChange}
         placeholder="Enter search term..."
       />
-      <button disabled={formData.length < 1}>Submit</button>
+      <button>Submit</button>
     </form>
   );
 }
