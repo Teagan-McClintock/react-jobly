@@ -47,7 +47,7 @@ function CompanyDetail() {
     fetchCompanyDetails();
   }
 
-  useEffect(fetchCompanyDetailsOnMount, []);
+  useEffect(fetchCompanyDetailsOnMount, [handle]);
 
   if (company === "error") {
     return (
