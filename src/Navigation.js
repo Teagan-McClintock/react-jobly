@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 /**Navigation stays on the top of the screen and contains links to
  *  homepage, JobList, and CompanyList
@@ -12,11 +12,19 @@ import { Link } from "react-router-dom"
  */
 
 function Navigation() {
+  const activeState = ({ isActive, isPending }) => {
+    return {
+    color: isPending ? "rgb(253 230 138)" : "",
+    backgroundColor: isActive ? "rgb(69 26 3)" : "",
+    fontWeight: isActive ? "bold" : ""
+    };
+  };
+
   return (
     <header className="Navigation">
-      <Link to={"/"}>Jobly</Link>
-      <Link to={"/companies"}>Companies</Link>
-      <Link to={"/jobs"}>Jobs</Link>
+      <NavLink to={"/"} style={activeState}>Jobly</NavLink>
+      <NavLink to={"/companies"} style={activeState}>Companies</NavLink>
+      <NavLink to={"/jobs"} style={activeState}>Jobs</NavLink>
     </header>
   ) // use NavLink instead of Link here (come back to this when we style)
 }
