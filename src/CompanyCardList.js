@@ -1,4 +1,5 @@
 import CompanyCard from "./CompanyCard";
+import './CompanyCardList.css';
 
 /**
  *  CompanyCardList displays all CompanyCard components.
@@ -18,7 +19,7 @@ function CompanyCardList({ companies }) {
 
 
   return (
-    <div className="CompanyCard">
+    <div className="CompanyCardList">
       {companies.map(company => <CompanyCard
         company={company}
         key={company.handle}/>)

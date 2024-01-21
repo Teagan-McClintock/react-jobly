@@ -13,6 +13,10 @@ import "./Navigation.css";
  */
 
 function Navigation() {
+
+  //This method of setting style from
+  //https://medium.com/@alexanie_/navlink-component-in-react-router-b83f4a11794f
+
   const activeState = ({ isActive, isPending }) => {
     return {
     color: isPending ? "rgb(253 230 138)" : "",
@@ -28,15 +32,7 @@ function Navigation() {
         <NavLink to={"/jobs"} style={activeState}>Jobs</NavLink>
       </div>
     </header>
-  ) // use NavLink instead of Link here (come back to this when we style)
+  )
 }
 
 export default Navigation;
-
-// <div className="Navigation">
-// <header className="Navigation">
-//   <NavLink to={"/"} style={activeState}>Jobly</NavLink>
-//   <NavLink to={"/companies"} style={activeState}>Companies</NavLink>
-//   <NavLink to={"/jobs"} style={activeState}>Jobs</NavLink>
-// </header>
-// </div>

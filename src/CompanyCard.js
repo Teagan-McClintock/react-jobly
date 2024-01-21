@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'; // check
-
+import "./CompanyCard.css"
 
 /**
  *  CompanyCard shows information about a single company.

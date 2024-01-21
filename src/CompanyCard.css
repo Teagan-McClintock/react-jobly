@@ -1,0 +1,20 @@
+.CompanyCard {
+  background-color: rgb(253, 248, 241);
+  width: 500px;
+  margin: auto;
+  text-align: left;
+  padding: 10px;
+  font-family: Calibri;
+  position: relative;
+}
+
+.CompanyCard h3, p {
+  margin: 0px;
+}
+
+.CompanyCard img {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  height: 40%;
+}
