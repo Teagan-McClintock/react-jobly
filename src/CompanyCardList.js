@@ -20,14 +20,16 @@ function CompanyCardList({ companies }) {
 
   return (
     <div className="CompanyCardList">
-      {companies.map(company => <CompanyCard
-        company={company}
-        key={company.handle}/>)
+      {Object.keys(companies).length > 0
+        ? companies.map(company =>
+          <CompanyCard
+            company={company}
+            key={company.handle}
+          />)
+        : <p>Sorry, no results found...</p>
       }
     </div>
   );
 }
 
 export default CompanyCardList;
-
-// if no companies, send no result message

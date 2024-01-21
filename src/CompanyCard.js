@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'; // check
+import { useNavigate, Link } from 'react-router-dom'; // check
 import "./CompanyCard.css"
 
 /**
@@ -24,16 +24,12 @@ function CompanyCard({ company }) {
   }
 
   return (
-    <div className="CompanyCard" onClick={showCompanyDetails}>
+    <Link className="CompanyCard" to={`/companies/${company.handle}`}>
       <h3>{company.name}</h3>
-      <img src={company.logoUrl} alt={company.name}/>
+      {company.logoUrl && <img src={company.logoUrl} alt={company.name}/>}
       <p>{company.description}</p>
-    </div>
+    </Link>
   );
 }
-// replace div's onClick with a Link tag (that's what is messing with the
-// pointer hand) "/companies/:handle"
 
-// also check if that company logo url exists (if not, don't show it)
-// and if it does exist, show it
 export default CompanyCard;

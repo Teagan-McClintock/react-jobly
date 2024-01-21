@@ -8,6 +8,8 @@
   font-family: Calibri;
   position: relative;
   margin-top: 15px;
+  text-decoration: none;
+  color: rgb(50, 18, 80);
 }
 
 /* note to self: margin-bottom HAS to go below margin to be accounted */

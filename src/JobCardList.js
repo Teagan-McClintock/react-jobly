@@ -19,15 +19,17 @@ function JobCardList({ jobs, showCompanyName = false }) {
 
   return (
     <div className="JobCardList">
-      {jobs.map(job =>
-        <JobCard
-          job={job}
-          key={job.id}
-          showCompanyName={showCompanyName}
-        />
-      )}
+      {Object.keys(jobs).length > 0
+        ? jobs.map(job =>
+            <JobCard
+              job={job}
+              key={job.id}
+              showCompanyName={showCompanyName}
+            />)
+        : <p>Sorry, no results found...</p>
+      }
     </div>
-  )
+  );
 }
 
 export default JobCardList;
