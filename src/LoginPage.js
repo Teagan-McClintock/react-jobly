@@ -13,9 +13,8 @@ import { useState } from "react";
  *               'log in' user.
  *
  *  States:
- *    - isLoading, a boolean
- *    - userData, an object
- *        {username, firstname, lastname, email}
+ *    - errors: an array of error messages to be passed through when re-rendering
+ *      the input form
  *
  *  Renders:
  *    RoutesList -> LoginPage -> LoginForm
@@ -33,6 +32,7 @@ function LoginPage({ loginUser }) {
       const token = await JoblyApi.signIn(credentials);
       // console.log("RESULT", token);
       JoblyApi.token = token;
+      loginUser(credentials.username);
       navigate("/");
       //TODO: add context here when you create context:
       // loginUser(token); // or credentials.username
@@ -48,7 +48,6 @@ function LoginPage({ loginUser }) {
   return (
     <LoginForm
       onSubmit={handleSubmit}
-      defaultData={{username: "", password: ""}}
       errors={errors}
     />
     );

@@ -7,8 +7,7 @@ import { useState } from "react";
  *
  *  Props:
  *    - onSubmit, a callback to return user inputs to LoginPage
- *    - errors,
- *    - defaultData, initially empty strings resembling the formData
+ *    - errors, an array of string messages
  *
  *  States:
  *    formData, an object containing username & password data for user:
@@ -17,13 +16,12 @@ import { useState } from "react";
  *  Renders:
  *    LoginPage -> LoginForm
  */
-function LoginForm({ onSubmit, errors, defaultData }) {
-  console.log("LoginForm rendered, props are onSubmit, errors, defaultData");
+function LoginForm({ onSubmit, errors }) {
+  console.log("LoginForm rendered, props are onSubmit, errors");
   // console.log("onSubmit:", onSubmit);
   // console.log("WANT TO SEE errors:", errors);
-  console.log("defaultData", defaultData);
 
-  const [formData, setFormData] = useState(defaultData);
+  const [formData, setFormData] = useState({username: "", password: ""});
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -44,7 +42,7 @@ function LoginForm({ onSubmit, errors, defaultData }) {
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
       {errors && <p>{errors}</p>}
-      {/* {errors && errors.map(error => <p>{error}</p>)} */}
+      {/* {errors && errors.map(error => <p key={}>{error}</p>)} */}
       <label htmlFor="username">Username: </label>
       <input
         id="username"
