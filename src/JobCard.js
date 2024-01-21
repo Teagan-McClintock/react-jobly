@@ -1,6 +1,8 @@
 /**JobCard displays info about a single job
  *
- * props: job {id, title, salary, equity, companyHandle, companyName}
+ * props:
+ *  - job {id, title, salary, equity, companyHandle, companyName}
+ *  - showCompanyName: boolean
  *
  * state: none
  *
@@ -9,12 +11,15 @@
  *
  */
 
-function JobCard({ job }) {
+function JobCard({ job, showCompanyName = false }) {
   return (
     <div className="JobCard">
-      <p>This is a job card</p>
+      <h3>{job.title}</h3>
+      {showCompanyName === true && <h4>{job.companyName}</h4>}
+      {job.salary && <p>Salary: {job.salary}</p>}
+      {job.equity && <p>Equity: {job.equity}</p>}
     </div>
   )
-} // reminder: add classNames to some company components
+}
 
 export default JobCard;

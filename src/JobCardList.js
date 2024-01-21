@@ -2,7 +2,10 @@ import JobCard from "./JobCard";
 
 /**JobCardList holds and displays a list of JobCards
  *
- * props: jobs [{id, title, salary, equity, companyHandle, companyName},...]
+ * props:
+ *  - jobs [{id, title, salary, equity, companyHandle, companyName},...]
+ *  - showCompanyName: boolean
+ *
  *
  * state: none
  *
@@ -11,12 +14,18 @@ import JobCard from "./JobCard";
  *
  */
 
-function JobCardList({ jobs }) {
+function JobCardList({ jobs, showCompanyName = false }) {
   console.log("JobCardList rendered, jobs prop:", jobs);
 
   return (
     <div className="JobCardList">
-      {jobs.map(job => <JobCard job={job} key={job.id} />)}
+      {jobs.map(job =>
+        <JobCard
+          job={job}
+          key={job.id}
+          showCompanyName={showCompanyName}
+        />
+      )}
     </div>
   )
 }
