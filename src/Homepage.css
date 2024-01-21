@@ -1,3 +1,7 @@
 .Homepage {
-  
+  height: 50vh;
+  display: flex;
+  align-items: bottom;
+  justify-content: center;
+  flex-direction: column;
 }
