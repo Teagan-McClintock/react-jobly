@@ -10,7 +10,7 @@ import ProfilePage from './ProfilePage';
 
 /**RoutesList contains a list of routes
  *
- * props: none
+ * props: loginUser (a function from App to pass to login/signup routes)
  *
  * state: none
  *
@@ -18,15 +18,15 @@ import ProfilePage from './ProfilePage';
  * App -> RoutesList -> {JobList, CompanyDetail, CompanyList, Homepage}
  */
 
-function RoutesList({  }) {
+function RoutesList({ loginUser }) {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/login" element={<LoginPage loginUser={loginUser}/>} />
+      <Route path="/signup" element={<SignupPage loginUser={loginUser}/>} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Routes>

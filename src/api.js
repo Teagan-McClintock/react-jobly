@@ -14,9 +14,12 @@ class JoblyApi {
   // Remember, the backend needs to be authorized with a token
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
-  static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  static token = "";
+
+  //*****ORIGINAL TOKEN BELOW*****
+  // "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  //   "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  //   "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
   static async request(endpoint, data = {}, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
@@ -81,7 +84,39 @@ class JoblyApi {
     let res = await this.request(`companies`, {nameLike: searchTerm});
     return res.companies;
   }
-  // take a look at the solution -- backend can handle 
+  // take a look at the solution -- backend can handle one search function that
+  // can take what it's searching as another arg
+
+  /** Validate if user has an account, returning a token if validated and an
+   * error object {message, status} if not (we think)
+   * Takes an object {username, password} as an argument
+   */
+
+  static async signIn(userCredentials) {
+    let res = await this.request(`auth/token`, userCredentials, "POST");
+    return res.token || res.error;
+  }
+
+  /** Create a new user, returning a token if successful and an
+   * error object {message, status} if not (we think)
+   * Takes an object {username, password, firstName, lastName, email} as an
+   * argument
+   */
+
+  static async signUp(userInfo) {
+    let res = await this.request(`auth/register`, userInfo, "POST");
+    return res.token || res.error;
+  }
+
+  /** Updates a user's data. Takes an object
+   * {username, firstName, lastName, email} as an argument
+   * Returns user object or error if no such user*/
+
+  static async updateUser(userInfo) {
+    let res = await this.request(
+      `/users/${userInfo.username}`, userInfo, "PATCH");
+    return res.user || res.error;
+  }
 }
 
 export default JoblyApi;
