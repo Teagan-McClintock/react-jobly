@@ -26,7 +26,8 @@ function LoginForm({ onSubmit, errors, defaultData }) {
   const [formData, setFormData] = useState(defaultData);
 
   function handleChange(evt) {
-    const { name, value } = evt.target.value;
+    const { name, value } = evt.target;
+    console.log("Name, value in handleChange", name, value);
     setFormData(currFormData => ({
       ...currFormData,
       [name]: value
@@ -40,7 +41,7 @@ function LoginForm({ onSubmit, errors, defaultData }) {
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
-      <label htmlFor="username"></label>
+      <label htmlFor="username">Username: </label>
       <input
         id="username"
         required
@@ -51,7 +52,7 @@ function LoginForm({ onSubmit, errors, defaultData }) {
         onChange={handleChange}
         />
 
-      <label htmlFor="password"></label>
+      <label htmlFor="password">Password: </label>
       <input
         id="password"
         required
@@ -61,7 +62,7 @@ function LoginForm({ onSubmit, errors, defaultData }) {
         value={formData.password}
         onChange={handleChange}
         />
-      <button></button>
+      <button>Submit</button>
     </form>
 
   );
