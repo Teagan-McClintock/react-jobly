@@ -37,12 +37,14 @@ function CompanyList() {
     }
   }
 
-  /** fetchSearchResults calls getResults async function.
+  /** fetchSearchResultsOnSearchTermChange calls fetchSearchResults async
+   *    function.
    *
-   *  getResults makes an API call for information on companies. If companies
-   *  is truthy, searches with searchedTerm for a list of companies with names
-   *  similar to searchedTerm. Otherwise, searches for all companies.
+   *  fetchSearchResults makes an API call for information on companies. If
+   *  companies is truthy, searches with searchedTerm for a list of companies
+   *  with names similar to searchedTerm. Otherwise, returns all companies.
    */
+
   function fetchSearchResultsOnSearchTermChange() {
     async function fetchSearchResults() {
       let queriedCompanies;
