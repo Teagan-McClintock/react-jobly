@@ -16,7 +16,6 @@ import { useState } from "react";
  */
 function SearchForm({ onSubmit }) {
   console.log("SearchForm rendered, onSubmit prop:", onSubmit);
-  console.log("onSubmit should be undefined for now");
 
   const [formData, setFormData] = useState("");
 
@@ -28,7 +27,6 @@ function SearchForm({ onSubmit }) {
 
   function handleSubmit(evt){
     evt.preventDefault();
-    console.log("submitting query, here is formData:", formData);
     onSubmit(formData);
     setFormData("");
   }

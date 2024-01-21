@@ -1,4 +1,7 @@
 import JobCardList from "./JobCardList";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
+import JoblyApi from "./api";
 
 /**
  *  CompanyDetail does the following:
@@ -11,8 +14,8 @@ import JobCardList from "./JobCardList";
  *  States:
  *    - company, an object
  *        {handle, name, description, numEmployees, logoUrl, jobs}
- *    - jobs, an array
- *        [{id, title, salary, equity, companyHandle, companyName},...]
+ *        (where jobs is an array
+ *          [{id, title, salary, equity, companyHandle, companyName},...])
  *    - isLoading, a boolean
  *
  *  Renders:
@@ -22,6 +25,20 @@ import JobCardList from "./JobCardList";
 
 function CompanyDetail() {
   console.log("CompanyDetail rendered, took no props");
+  const [company, setCompany] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { handle } = useParams();
+
+  //Get company data, will return with info + jobs
+  function fetchCompanyDetailsOnMount() {
+    async function fetchCompanyDetails() {
+      const queriedCompany = await JoblyApi.getCompany(handle);
+      setCompany(queriedCompany);
+      setIsLoading(false);
+    }
+    fetchCompanyDetails();
+  }
 
   return (
     <div className="CompanyDetail">

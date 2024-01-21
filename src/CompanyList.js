@@ -31,7 +31,6 @@ function CompanyList() {
    *  Updates searchedTerm state to term.
    */
   function updateSearchTerm(term) {
-    console.log("term arrived in CompanyList", term);
     if (term !== searchedTerm) {
       setSearchedTerm(term);
       setIsLoading(true); // Note to self: true because we're triggering API call
@@ -44,26 +43,21 @@ function CompanyList() {
    *  is truthy, searches with searchedTerm for a list of companies with names
    *  similar to searchedTerm. Otherwise, searches for all companies.
    */
-  function fetchSearchResults() {
-    async function getResults() {
-      console.log("!!!get results was called!, searchedTerm=", searchedTerm);
+  function fetchSearchResultsOnSearchTermChange() {
+    async function fetchSearchResults() {
       let queriedCompanies;
       if (searchedTerm) {
-        console.log("+++we should see this when searching arnold");
         queriedCompanies = await JoblyApi.searchCompanies(searchedTerm);
       } else {
-        console.log("---we should not see this when searching arnold");
         queriedCompanies = await JoblyApi.getCompanies();
       }
-      console.log("these are the companies we queried", queriedCompanies);
       setCompanies(queriedCompanies);
       setIsLoading(false);
     }
-    getResults();
+    fetchSearchResults();
   }
 
-  console.log("***this is companies", companies);
-  useEffect(fetchSearchResults, [searchedTerm]);
+  useEffect(fetchSearchResultsOnSearchTermChange, [searchedTerm]);
 
   // if (isLoading === true) return <div>Loading...</div>;
 
