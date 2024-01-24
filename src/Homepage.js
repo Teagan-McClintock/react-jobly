@@ -1,3 +1,4 @@
+import "./Homepage.css";
 
 /**
  *  Homepage shows slogan.

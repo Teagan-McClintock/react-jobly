@@ -1,3 +1,5 @@
+import './JobCard.css';
+
 /**JobCard displays info about a single job
  *
  * props:
