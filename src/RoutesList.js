@@ -17,9 +17,9 @@ import JobList from './JobList';
 function RoutesList() {
   return (
     <Routes>
+      <Route path="/" element={<Homepage />} />
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
-      <Route path="/" element={<Homepage />} />
       <Route path="/jobs" element={<JobList />} />
       <Route path="/*" element={null} />
     </Routes>
