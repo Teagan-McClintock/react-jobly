@@ -1,5 +1,5 @@
 import JobCardList from "./JobCardList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
 
@@ -40,10 +40,23 @@ function CompanyDetail() {
     fetchCompanyDetails();
   }
 
+  useEffect(fetchCompanyDetailsOnMount, []);
+
   return (
     <div className="CompanyDetail">
-      <p>Details on a company!</p>
-      <JobCardList jobs={[{id: 3}]}/>
+
+      {isLoading === true
+        ? <div>Loading...</div>
+        : (
+            <>
+              <div>
+                <h3>{company.name}</h3>
+                <p>{company.description}</p>
+              </div>
+              <JobCardList jobs={company.jobs}/>
+            </>
+          )
+      }
     </div>
 
   );
@@ -51,3 +64,10 @@ function CompanyDetail() {
 }
 
 export default CompanyDetail;
+
+// ask about jsx fragment
+
+// TODO: eventually, we'll want a handler for
+// if we have company, do stuff on page
+// or use useNavigate/Navigate to take them to NotFoundError
+// or a customized NotFound on this page <--

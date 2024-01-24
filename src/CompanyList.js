@@ -59,8 +59,6 @@ function CompanyList() {
 
   useEffect(fetchSearchResultsOnSearchTermChange, [searchedTerm]);
 
-  // if (isLoading === true) return <div>Loading...</div>;
-
   return (
     <div className="companyList">
       <SearchForm onSubmit={updateSearchTerm}/>

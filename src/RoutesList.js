@@ -3,6 +3,7 @@ import CompanyList from './CompanyList';
 import CompanyDetail from './CompanyDetail';
 import Homepage from './Homepage';
 import JobList from './JobList';
+import NotFoundPage from './NotFoundPage';
 
 /**RoutesList contains a list of routes
  *
@@ -21,10 +22,10 @@ function RoutesList() {
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
-      <Route path="/*" element={null} />
+      <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   )
-    // either go to the homepage or make a 404 component
+  
 }
 
 export default RoutesList;
