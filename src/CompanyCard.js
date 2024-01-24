@@ -13,7 +13,7 @@
  */
 
 function CompanyCard({ company }) {
-  console.log("CompanyCard rendered, company:", company);
+  // console.log("CompanyCard rendered, company:", company);
 
   return (
     <div className="CompanyCard">

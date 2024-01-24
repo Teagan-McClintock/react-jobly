@@ -14,12 +14,15 @@ import CompanyCard from "./CompanyCard";
  */
 
 function CompanyCardList({ companies }) {
-  console.log("CompanyCardList rendered companies prop:", companies);
+  // console.log("CompanyCardList rendered companies prop:", companies);
 
 
   return (
     <div className="CompanyCard">
-      {companies.map(company => <CompanyCard company={company} />)}
+      {companies.map(company => <CompanyCard
+        company={company}
+        key={company.handle}/>)
+      }
     </div>
   );
 }

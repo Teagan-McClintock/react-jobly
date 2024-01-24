@@ -1,6 +1,6 @@
 import SearchForm from "./SearchForm";
 import CompanyCardList from "./CompanyCardList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import JoblyApi from "./api";
 
 /**CompanyList does the following:
@@ -26,22 +26,48 @@ function CompanyList() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchedTerm, setSearchedTerm] = useState("");
 
+  /** Takes a search term string (result from SearchForm).
+   *
+   *  Updates searchedTerm state to term.
+   */
+  function updateSearchTerm(term) {
+    console.log("term arrived in CompanyList", term);
+    setIsLoading(true); // Note to self: true because we're triggering API call
+    setSearchedTerm(term);
+  }
+
+  /** fetchSearchResults calls getResults async function.
+   *
+   *  getResults makes an API call for information on companies. If companies
+   *  is truthy, searches with searchedTerm for a list of companies with names
+   *  similar to searchedTerm. Otherwise, searches for all companies.
+   */
   function fetchSearchResults() {
     async function getResults() {
-      const companies = await JoblyApi.searchCompanies(searchedTerm);
-      setCompanies(companies);
+      console.log("!!!get results was called!, searchedTerm=", searchedTerm);
+      let queriedCompanies;
+      if (searchedTerm) {
+        console.log("+++we should see this when searching arnold");
+        queriedCompanies = await JoblyApi.searchCompanies(searchedTerm);
+      } else {
+        console.log("---we should not see this when searching arnold");
+        queriedCompanies = await JoblyApi.getCompanies();
+      }
+      console.log("these are the companies we queried", queriedCompanies);
+      setCompanies(queriedCompanies);
       setIsLoading(false);
     }
     getResults();
   }
 
+  console.log("***this is companies", companies);
   useEffect(fetchSearchResults, [searchedTerm]);
 
   if (isLoading === true) return <div>Loading...</div>;
 
   return (
     <div className="companyList">
-      <SearchForm />
+      <SearchForm onSubmit={updateSearchTerm}/>
       <CompanyCardList companies={companies}/>
     </div>
   );

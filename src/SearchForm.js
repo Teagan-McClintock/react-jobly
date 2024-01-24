@@ -28,17 +28,21 @@ function SearchForm({ onSubmit }) {
 
   function handleSubmit(evt){
     evt.preventDefault();
-    onSubmit(formData); //TODO: Revisit once we've actually written this function
+    console.log("submitting query, here is formData:", formData);
+    onSubmit(formData);
+    setFormData("");
+    // revert formData to original state TODO: test this functionality later
   }
 
   return (
     <form className="SearchForm" onSubmit={handleSubmit}>
       <input
+        id="search-field"
         value={formData}
         onChange={handleChange}
         placeholder="Enter search term..."
       />
-      <button>Submit</button>
+      <button disabled={formData.length < 1}>Submit</button>
     </form>
   );
 }
