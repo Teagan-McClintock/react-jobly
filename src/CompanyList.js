@@ -1,3 +1,6 @@
+import SearchForm from "./SearchForm";
+import CompanyCardList from "./CompanyCardList";
+
 /**CompanyList does the following:
  * - renders SearchForm
  * - make fetch request to get information about searched term
@@ -19,7 +22,10 @@ function CompanyList() {
   console.log("CompanyList rendered, took no props");
 
   return (
-    <p>Companies!</p>
+    <div>
+      <SearchForm />
+      <CompanyCardList />
+    </div>
   );
 
 }

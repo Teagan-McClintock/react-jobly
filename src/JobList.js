@@ -1,4 +1,5 @@
 import JobCardList from "./JobCardList";
+import SearchForm from "./SearchForm";
 
 /**
  *  JobList does the following:
@@ -25,7 +26,7 @@ function JobList() {
   return (
     <div className="JobList">
       <SearchForm />
-      <JobCardList jobs={[{id: 1}]} />
+      <JobCardList jobs={[{id: 1}, {id: 2}]} />
     </div>
   );
 

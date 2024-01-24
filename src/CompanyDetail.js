@@ -1,3 +1,4 @@
+import JobCardList from "./JobCardList";
 
 /**
  *  CompanyDetail does the following:
@@ -23,7 +24,11 @@ function CompanyDetail() {
   console.log("CompanyDetail rendered, took no props");
 
   return (
-    <p>Details on a company!</p>
+    <div>
+      <p>Details on a company!</p>
+      <JobCardList jobs={[{id: 3}]}/>
+    </div>
+
   );
 
 }

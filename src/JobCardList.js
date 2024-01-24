@@ -12,8 +12,10 @@ import JobCard from "./JobCard";
  */
 
 function JobCardList({ jobs }) {
+  console.log("JobCardList rendered, jobs prop:", jobs);
+
   return (
-    <div>
+    <div className="JobCardList">
       {jobs.map(job => <JobCard job={job} key={job.id} />)}
     </div>
   )
