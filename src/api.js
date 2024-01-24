@@ -66,10 +66,18 @@ class JoblyApi {
     return res.jobs;
   }
 
-  /**Search for a job */
+  /** Search jobs that contain searchTerm */
   static async searchJobs(searchTerm) {
-    //pass params as title=
+    let res = await this.request(`jobs?title=${searchTerm}`);
+    return res.jobs;
   }
+
+  /** Search companies that contain searchTerm */
+  static async searchCompanies(searchTerm) {
+    let res = await this.request(`companies?nameLike=${searchTerm}`);
+    return res.companies;
+  }
+
 }
 
 export default JoblyApi;
