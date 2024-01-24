@@ -16,6 +16,11 @@
  */
 
 function CompanyList() {
+  console.log("CompanyList rendered, took no props");
+
+  return (
+    <p>Companies!</p>
+  );
 
 }
 

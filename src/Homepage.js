@@ -10,6 +10,14 @@
  *    RoutesList -> Homepage
  */
 function Homepage() {
+  console.log("Homepage rendered, no props");
+
+  return (
+    <div>
+      <h2>Jobly!</h2>
+      <p>All the jobs in one convenient place</p>
+    </div>
+  );
 
 }
 

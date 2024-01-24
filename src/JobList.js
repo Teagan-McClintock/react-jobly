@@ -15,6 +15,11 @@
  *
  */
 function JobList() {
+  console.log("JobList rendered, took no props");
+
+  return (
+    <p>Jobs!</p>
+  );
 
 }
 

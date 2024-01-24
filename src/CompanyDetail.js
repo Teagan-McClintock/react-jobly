@@ -18,6 +18,11 @@
  *
  */
 function CompanyDetail() {
+  console.log("CompanyDetail rendered, took no props");
+
+  return (
+    <p>Details on a company!</p>
+  );
 
 }
 
