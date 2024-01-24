@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom'; // check
+
 
 /**
  *  CompanyCard shows information about a single company.
@@ -15,8 +17,14 @@
 function CompanyCard({ company }) {
   // console.log("CompanyCard rendered, company:", company);
 
+  const navigate = useNavigate();
+
+  function showCompanyDetails() {
+    navigate(`/companies/${company.handle}`);
+  }
+
   return (
-    <div className="CompanyCard">
+    <div className="CompanyCard" onClick={showCompanyDetails}>
       <h3>{company.name}</h3>
       <img src={company.logoUrl} alt={company.name}/>
       <p>{company.description}</p>
@@ -25,3 +33,14 @@ function CompanyCard({ company }) {
 }
 
 export default CompanyCard;
+
+/**
+ *
+ * CompanyCard click: show the details on that company
+ * CompanyDetail
+ *
+ *
+ *
+ *
+ *
+ */
