@@ -15,6 +15,6 @@ function JobCard({ job }) {
       <p>This is a job card</p>
     </div>
   )
-}
+} // reminder: add classNames to some company components
 
 export default JobCard;

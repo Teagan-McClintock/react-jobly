@@ -24,7 +24,7 @@ function RoutesList() {
       <Route path="/*" element={null} />
     </Routes>
   )
-
+    // either go to the homepage or make a 404 component
 }
 
 export default RoutesList;
