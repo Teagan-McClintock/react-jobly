@@ -4,6 +4,9 @@ import CompanyDetail from './CompanyDetail';
 import Homepage from './Homepage';
 import JobList from './JobList';
 import NotFoundPage from './NotFoundPage';
+import LoginPage from './LoginPage';
+import SignupPage from './SingupPage';
+import ProfilePage from './ProfilePage';
 
 /**RoutesList contains a list of routes
  *
@@ -15,17 +18,20 @@ import NotFoundPage from './NotFoundPage';
  * App -> RoutesList -> {JobList, CompanyDetail, CompanyList, Homepage}
  */
 
-function RoutesList() {
+function RoutesList({  }) {
   return (
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/companies" element={<CompanyList />} />
       <Route path="/companies/:handle" element={<CompanyDetail />} />
       <Route path="/jobs" element={<JobList />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
       <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   )
-  
+
 }
 
 export default RoutesList;
