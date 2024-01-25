@@ -81,7 +81,7 @@ class JoblyApi {
     let res = await this.request(`companies`, {nameLike: searchTerm});
     return res.companies;
   }
-
+  // take a look at the solution -- backend can handle 
 }
 
 export default JoblyApi;

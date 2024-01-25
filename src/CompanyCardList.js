@@ -29,3 +29,5 @@ function CompanyCardList({ companies }) {
 }
 
 export default CompanyCardList;
+
+// if no companies, send no result message

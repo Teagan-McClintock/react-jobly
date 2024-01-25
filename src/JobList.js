@@ -78,5 +78,5 @@ function JobList() {
   );
 
 }
-
+// we could say "no jobs" if nothing is found from query
 export default JobList;

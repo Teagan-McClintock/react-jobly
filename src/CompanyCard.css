@@ -2,11 +2,15 @@
   background-color: rgb(253, 248, 241);
   width: 500px;
   margin: auto;
+  margin-bottom: 15px;
   text-align: left;
   padding: 10px;
   font-family: Calibri;
   position: relative;
+  margin-top: 15px;
 }
+
+/* note to self: margin-bottom HAS to go below margin to be accounted */
 
 .CompanyCard h3, p {
   margin: 0px;

@@ -31,5 +31,9 @@ function CompanyCard({ company }) {
     </div>
   );
 }
+// replace div's onClick with a Link tag (that's what is messing with the
+// pointer hand) "/companies/:handle"
 
+// also check if that company logo url exists (if not, don't show it)
+// and if it does exist, show it
 export default CompanyCard;

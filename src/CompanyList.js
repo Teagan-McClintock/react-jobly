@@ -74,5 +74,6 @@ function CompanyList() {
   );
 
 }
-
+// might want ternary (if no companies, let user know or could do it in
+//other place)
 export default CompanyList;
