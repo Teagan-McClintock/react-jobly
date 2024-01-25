@@ -2,6 +2,7 @@ import JobCardList from "./JobCardList";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import JoblyApi from "./api";
+import NotFoundPage from './NotFoundPage';
 
 /**
  *  CompanyDetail does the following:
@@ -33,14 +34,26 @@ function CompanyDetail() {
   //Get company data, will return with info + jobs
   function fetchCompanyDetailsOnMount() {
     async function fetchCompanyDetails() {
-      const queriedCompany = await JoblyApi.getCompany(handle);
-      setCompany(queriedCompany);
+      let queriedCompany;
+      try {
+        queriedCompany = await JoblyApi.getCompany(handle);
+      } catch {
+        queriedCompany = "error";
+      }
       setIsLoading(false);
+      setCompany(queriedCompany);
     }
+
     fetchCompanyDetails();
   }
 
   useEffect(fetchCompanyDetailsOnMount, []);
+
+  if (company === "error") {
+    return (
+      <NotFoundPage />
+    );
+  }
 
   return (
     <div className="CompanyDetail">
@@ -66,8 +79,3 @@ function CompanyDetail() {
 export default CompanyDetail;
 
 // ask about jsx fragment
-
-// TODO: eventually, we'll want a handler for
-// if we have company, do stuff on page
-// or use useNavigate/Navigate to take them to NotFoundError
-// or a customized NotFound on this page <--

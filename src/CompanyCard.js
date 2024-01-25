@@ -33,14 +33,3 @@ function CompanyCard({ company }) {
 }
 
 export default CompanyCard;
-
-/**
- *
- * CompanyCard click: show the details on that company
- * CompanyDetail
- *
- *
- *
- *
- *
- */
