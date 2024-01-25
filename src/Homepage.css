@@ -1,7 +1,9 @@
 .Homepage {
-  height: 50vh;
+  height: 75vh;
   display: flex;
   align-items: bottom;
   justify-content: center;
   flex-direction: column;
+  color: rgb(50, 18, 80);
+  font-size: 30px;
 }

@@ -1,0 +1,16 @@
+.Navigation-links {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 6px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.Navigation-links * {
+  text-decoration: none;
+}
+
+.Navigation {
+  background-color: rgb(106, 106, 246);
+  height: 5vh;
+}
