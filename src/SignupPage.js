@@ -21,8 +21,8 @@ import { useState } from "react";
  *
  */
 
-function SignupPage({ loginUser }) {
-  console.log("Signup page rendered, prop loginUser:", loginUser);
+function SignupPage({ signupUser }) {
+  console.log("Signup page rendered, prop signupUser:", signupUser);
 
   const [errors, setErrors] = useState();
 
@@ -37,13 +37,7 @@ function SignupPage({ loginUser }) {
 
   async function registerUserAndCreateToken(userInfo){
     try {
-      const token = await JoblyApi.signUp(userInfo);
-      JoblyApi.token = token;
-      loginUser({
-        username: userInfo.username,
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        email: userInfo.email});
+      await signupUser(userInfo);
       navigate("/");
     } catch(error){
       setErrors(error);

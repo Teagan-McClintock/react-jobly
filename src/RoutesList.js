@@ -22,12 +22,12 @@ import ProfilePage from './ProfilePage';
  *                        ProfilePage, LoginPage, SignupPage, NotFoundPage}
  */
 
-function RoutesList({ loginUser, loggedInUser }) {
+function RoutesList({ loginUser, signupUser, loggedInUser }) {
   //TODO: Add filtering for login/signup to not exist for logged-in users
   return (
     <Routes>
       <Route path="/login" element={<LoginPage loginUser={loginUser}/>} />
-      <Route path="/signup" element={<SignupPage loginUser={loginUser}/>} />
+      <Route path="/signup" element={<SignupPage signupUser={signupUser}/>} />
       <Route path="/" element={<Homepage />} />
       {loggedInUser &&
         <>

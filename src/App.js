@@ -22,8 +22,31 @@ function App() {
 
   /**Updates state to add passed-in user as logged-in user */
 
-  function loginUser(user) {
+  /**Takes user credentials {username, password} and makes Api call
+   * to see if they have an account. If they do, updates Api token to that
+   * user's token, logs them in.
+   *
+   * Will throw error if user supplied bad credentials.
+   */
+
+  async function loginUser(credentials) {
+    const token = await JoblyApi.signIn(credentials);
+    JoblyApi.token = token;
+    const user = await JoblyApi.getUser(credentials.username);
+
     setLoggedInUser(user);
+  }
+
+  /** */
+  async function signupUser(userInfo) {
+    const token = await JoblyApi.signUp(userInfo);
+    JoblyApi.token = token;
+    setLoggedInUser({
+      username: userInfo.username,
+      firstName: userInfo.firstName,
+      lastName: userInfo.lastName,
+      email: userInfo.email
+    });
   }
 
   /**Updates state to clear logged-in user, and clears token from JoblyApi */
@@ -37,9 +60,10 @@ function App() {
     <div className="App">
       <userContext.Provider value={{ loggedInUser }}>
         <BrowserRouter>
-          <Navigation logoutUser={logoutUser}/>
+          <Navigation logoutUser={logoutUser} />
           <RoutesList
             loginUser={loginUser}
+            signupUser={signupUser}
             loggedInUser={loggedInUser}
           />
         </BrowserRouter>
