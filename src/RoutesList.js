@@ -18,20 +18,31 @@ import ProfilePage from './ProfilePage';
  * App -> RoutesList -> {JobList, CompanyDetail, CompanyList, Homepage}
  */
 
-function RoutesList({ loginUser }) {
+function RoutesList({ loginUser, loggedInUsername }) {
+
   return (
     <Routes>
-      <Route path="/" element={<Homepage />} />
-      <Route path="/companies" element={<CompanyList />} />
-      <Route path="/companies/:handle" element={<CompanyDetail />} />
-      <Route path="/jobs" element={<JobList />} />
       <Route path="/login" element={<LoginPage loginUser={loginUser}/>} />
       <Route path="/signup" element={<SignupPage loginUser={loginUser}/>} />
-      <Route path="/profile" element={<ProfilePage />} />
-      <Route path="/*" element={<NotFoundPage />} />
+      <Route path="/" element={<Homepage />} />
+      {loggedInUsername &&
+        <>
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/companies" element={<CompanyList />} />
+          <Route path="/companies/:handle" element={<CompanyDetail />} />
+          <Route path="/jobs" element={<JobList />} />
+          <Route path="/*" element={<NotFoundPage />} />
+        </>
+      }
+      {loggedInUsername === null &&
+        <Route path="/*" element={<NotFoundPage />}/>
+      }
     </Routes>
-  )
+  );
 
 }
+
+// TODO: time permitting, refine extra routes for non-logged in user
+// Also: <></> ask about jsx fragments & if they're acceptable style-wise
 
 export default RoutesList;

@@ -28,7 +28,10 @@ function App() {
       <userContext.Provider value={{loggedInUsername}}>
         <BrowserRouter>
           <Navigation />
-          <RoutesList loginUser={loginUser}/>
+          <RoutesList
+            loginUser={loginUser}
+            loggedInUsername={loggedInUsername}
+          />
         </BrowserRouter>
       </userContext.Provider>
     </div>
