@@ -32,7 +32,8 @@ function LoginPage({ loginUser }) {
       const token = await JoblyApi.signIn(credentials);
       // console.log("RESULT", token);
       JoblyApi.token = token;
-      loginUser(credentials.username);
+      const user = await JoblyApi.getUser(credentials.username);
+      loginUser(user);
       navigate("/");
       //TODO: add context here when you create context:
       // loginUser(token); // or credentials.username

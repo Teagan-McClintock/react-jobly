@@ -18,14 +18,14 @@ import ProfilePage from './ProfilePage';
  * App -> RoutesList -> {JobList, CompanyDetail, CompanyList, Homepage}
  */
 
-function RoutesList({ loginUser, loggedInUsername }) {
+function RoutesList({ loginUser, loggedInUser }) {
 
   return (
     <Routes>
       <Route path="/login" element={<LoginPage loginUser={loginUser}/>} />
       <Route path="/signup" element={<SignupPage loginUser={loginUser}/>} />
       <Route path="/" element={<Homepage />} />
-      {loggedInUsername &&
+      {loggedInUser &&
         <>
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/companies" element={<CompanyList />} />
@@ -34,7 +34,7 @@ function RoutesList({ loginUser, loggedInUsername }) {
           <Route path="/*" element={<NotFoundPage />} />
         </>
       }
-      {loggedInUsername === null &&
+      {loggedInUser === null &&
         <Route path="/*" element={<NotFoundPage />}/>
       }
     </Routes>

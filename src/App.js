@@ -17,20 +17,20 @@ import { useState } from "react";
  */
 
 function App() {
-  const [loggedInUsername, setLoggedInUsername] = useState(null);
+  const [loggedInUser, setLoggedInUser] = useState(null);
 
-  function loginUser(username) {
-    setLoggedInUsername(username);
+  function loginUser(user) {
+    setLoggedInUser(user);
   }
 
   return (
     <div className="App">
-      <userContext.Provider value={{loggedInUsername}}>
+      <userContext.Provider value={{ loggedInUser }}>
         <BrowserRouter>
           <Navigation />
           <RoutesList
             loginUser={loginUser}
-            loggedInUsername={loggedInUsername}
+            loggedInUser={loggedInUser}
           />
         </BrowserRouter>
       </userContext.Provider>

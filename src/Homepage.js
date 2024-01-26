@@ -16,20 +16,21 @@ import { Link } from "react-router-dom";
 
 function Homepage() {
   console.log("Homepage rendered, no props");
-  const { loggedInUsername } = useContext(userContext);
+  const { loggedInUser } = useContext(userContext);
 
   return (
     <div className="Homepage">
-      {loggedInUsername
-        ?<div>
-          <h2>Jobly!</h2>
-          <p>All the jobs in one convenient place</p>
-          <p>Welcome back, {loggedInUsername} </p>
-        </div>
+      {loggedInUser
+        ? <div>
+            <h2>Jobly!</h2>
+            <p>All the jobs in one convenient place</p>
+            <p>Welcome back, {loggedInUser.firstName} </p>
+          </div>
         : <div>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </div>}
+            <Link to="/login">Login</Link>
+            <Link to="/signup">Sign Up</Link>
+          </div>
+      }
     </div>
   );
 

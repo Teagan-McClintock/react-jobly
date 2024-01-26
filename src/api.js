@@ -117,6 +117,15 @@ class JoblyApi {
       `/users/${userInfo.username}`, userInfo, "PATCH");
     return res.user || res.error;
   }
+
+  /** Gets a user's data. Takes a username (string) as an argument
+   * Returns user object or error if no such user
+  */
+
+  static async getUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
 }
 
 export default JoblyApi;
