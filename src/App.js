@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import { BrowserRouter } from "react-router-dom";
 import userContext from './userContext';
 import { useState } from "react";
+import JoblyApi from './api';
 
 /** App, renders Nav bar and routes
  *
@@ -21,6 +22,11 @@ function App() {
 
   function loginUser(user) {
     setLoggedInUser(user);
+  }
+
+  function logoutUser() {
+    JoblyApi.token = null;
+    setLoggedInUser(null);
   }
 
   return (
