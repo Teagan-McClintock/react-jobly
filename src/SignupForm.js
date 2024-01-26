@@ -30,6 +30,10 @@ function SignupForm({ onSubmit, errors }) {
     email: ""
   });
 
+  /**
+   *  When user changes a text input of one of the form fields, updates value
+   *  for that key in formData state.
+   */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(currFormData => ({
@@ -38,14 +42,20 @@ function SignupForm({ onSubmit, errors }) {
     }));
   }
 
+  /**
+   *  When user submits form, prevents default behaviour and sends formData
+   *  to SignupPage for processing.
+   */
   function handleSubmit(evt) {
     evt.preventDefault();
     onSubmit(formData);
   }
 
+  // FIXME: add keys in SignupPage for errors mapping
   return (
     <form className="SignupForm" onSubmit={handleSubmit}>
-      {errors && <p>{errors}</p>}
+    {/* {errors && errors.map(error => <p>{error}</p>)} */}
+    {errors && <p>{errors}</p>}
 
       <label htmlFor="username">Username: </label>
       <input

@@ -19,30 +19,36 @@ import { useState } from "react";
 function LoginForm({ onSubmit, errors }) {
   console.log("LoginForm rendered, props are onSubmit, errors");
   // console.log("onSubmit:", onSubmit);
-  // console.log("WANT TO SEE errors:", errors);
+  // console.log("errors:", errors);
 
   const [formData, setFormData] = useState({username: "", password: ""});
 
+  /**
+   *  When user changes a text input of one of the form fields, updates value
+   *  for that key in formData state.
+   */
   function handleChange(evt) {
     const { name, value } = evt.target;
-    console.log("Name, value in handleChange", name, value);
     setFormData(currFormData => ({
       ...currFormData,
       [name]: value
     }));
   }
 
+  /**
+   *  When user submits form, prevents default behaviour and sends formData
+   *  to LoginPage for processing.
+   */
   function handleSubmit(evt) {
     evt.preventDefault();
     onSubmit(formData);
   }
 
-  // TODO: examine errors to see if their display works as anticipated
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
       {errors && <p>{errors}</p>}
-      {/* {errors && errors.map(error => <p key={}>{error}</p>)} */}
+
       <label htmlFor="username">Username: </label>
       <input
         id="username"
