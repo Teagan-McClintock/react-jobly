@@ -50,10 +50,10 @@ function ProfileForm( { onSubmit, errors }) {
     onSubmit(formData);
   }
 
-  // FIXME: add keys in ProfilePage when you create it (Same deal for signupForm)
+
   return (
     <form classname="ProfileForm" onSubmit={handleSubmit}>
-      {errors && errors.map(error => <p>{error}</p>)}
+      {errors && errors.map(error => <p key={error}>{error}</p>)}
 
       <label htmlFor="username">Username: </label>
       <input

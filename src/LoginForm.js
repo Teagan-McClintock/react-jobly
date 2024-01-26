@@ -50,7 +50,7 @@ function LoginForm({ onSubmit, errors }) {
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
-      {errors && <p>{errors}</p>}
+      {errors && errors.map(error => <p key={error}>{error}</p>)}
 
       <label htmlFor="username">Username: </label>
       <input

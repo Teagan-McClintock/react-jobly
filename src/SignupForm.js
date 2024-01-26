@@ -52,11 +52,9 @@ function SignupForm({ onSubmit, errors }) {
     onSubmit(formData);
   }
 
-  // Ask about: errors as array vs mapping when rendering form
-
   return (
     <form className="SignupForm" onSubmit={handleSubmit}>
-    {errors && <p>{errors}</p>}
+      {errors && errors.map(error => <p key={error}>{error}</p>)}
 
       <label htmlFor="username">Username: </label>
       <input
