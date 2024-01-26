@@ -1,4 +1,7 @@
 import SignupForm from "./SignupForm";
+import JoblyApi from "./api";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 
 /**
@@ -10,9 +13,8 @@ import SignupForm from "./SignupForm";
  *               'log in' user.
  *
  *  States:
- *    - isLoading, a boolean
- *    - userData, an object
- *        {username, firstname, lastname, email}
+ *    - errors: an array of error messages to be passed through when re-rendering
+ *      the signup form
  *
  *  Renders:
  *    RoutesList -> SignupPage -> SignupForm
@@ -20,6 +22,36 @@ import SignupForm from "./SignupForm";
  */
 function SignupPage({ loginUser }) {
   console.log("Signup page rendered, prop loginUser:", loginUser);
+
+  const [errors, setErrors] = useState();
+
+  const navigate = useNavigate();
+
+  async function registerUserAndCreateToken(userInfo){
+    try {
+      const token = await JoblyApi.signUp(userInfo);
+      JoblyApi.token = token;
+      loginUser({
+        username: userInfo.username,
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        email: userInfo.email});
+      navigate("/");
+    } catch(error){
+      setErrors(error);
+    }
+  }
+
+  function handleSubmit(userInfo){
+    registerUserAndCreateToken(userInfo);
+  }
+
+  return (
+    <SignupForm
+      onSubmit={handleSubmit}
+      errors={errors}
+    />
+  );
 }
 
 export default SignupPage;
