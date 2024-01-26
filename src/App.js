@@ -37,7 +37,13 @@ function App() {
     setLoggedInUser(user);
   }
 
-  /** */
+  /**Takes userInfo {username, firstName, lastName, email} and makes
+   * an Api call to attempt to create an account for that user. If successful,
+   * sets Api token to that user's newly created token and logs user in to site
+   *
+   * Will throw error if username is taken or values are invalid (empty).
+  */
+
   async function signupUser(userInfo) {
     const token = await JoblyApi.signUp(userInfo);
     JoblyApi.token = token;

@@ -28,9 +28,8 @@ function SignupPage({ signupUser }) {
 
   const navigate = useNavigate();
 
-  /**Takes userInfo {username, firstName, lastName, email} and makes
-   * an Api call to attempt to create an account for that user. If successful,
-   * sets Api token to that user's newly created token and logs user in to site,
+  /**Takes userInfo {username, firstName, lastName, email} and  attempts to
+   * create an account for that user. If successful, logs user in to site,
    * then redirects to homepage. Otherwise, updates errors in state to be
    * displayed on signup form
    */
