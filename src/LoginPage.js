@@ -34,7 +34,7 @@ function LoginPage({ loginUser }) {
    * errors in state to display on login form.
    */
   //TODO: Rename to mention that this logs user in
-  async function fetchUserToken(credentials){
+  async function attemptLogin(credentials){
     try {
       const token = await JoblyApi.signIn(credentials);
       // console.log("RESULT", token);
@@ -49,7 +49,7 @@ function LoginPage({ loginUser }) {
 
   return (
     <LoginForm
-      onSubmit={fetchUserToken}
+      onSubmit={attemptLogin}
       errors={errors}
     />
     );
