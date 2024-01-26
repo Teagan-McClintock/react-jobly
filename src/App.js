@@ -33,7 +33,7 @@ function App() {
     <div className="App">
       <userContext.Provider value={{ loggedInUser }}>
         <BrowserRouter>
-          <Navigation />
+          <Navigation logoutUser={logoutUser}/>
           <RoutesList
             loginUser={loginUser}
             loggedInUser={loggedInUser}
