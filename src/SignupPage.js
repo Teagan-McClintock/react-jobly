@@ -27,6 +27,13 @@ function SignupPage({ loginUser }) {
 
   const navigate = useNavigate();
 
+  /**Takes userInfo {username, firstName, lastName, email} and makes
+   * an Api call to attempt to create an account for that user. If successful,
+   * sets Api token to that user's newly created token and logs user in to site,
+   * then redirects to homepage. Otherwise, updates errors in state to be
+   * displayed on signup form
+   */
+
   async function registerUserAndCreateToken(userInfo){
     try {
       const token = await JoblyApi.signUp(userInfo);
@@ -42,13 +49,9 @@ function SignupPage({ loginUser }) {
     }
   }
 
-  function handleSubmit(userInfo){
-    registerUserAndCreateToken(userInfo);
-  }
-
   return (
     <SignupForm
-      onSubmit={handleSubmit}
+      onSubmit={registerUserAndCreateToken}
       errors={errors}
     />
   );

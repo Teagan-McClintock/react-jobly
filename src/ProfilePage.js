@@ -1,3 +1,4 @@
+import ProfileForm from "./ProfileForm";
 
 /**
  *  ProfilePage takes user inputs (from form) and updates their profile.

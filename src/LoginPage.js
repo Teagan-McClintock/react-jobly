@@ -27,6 +27,12 @@ function LoginPage({ loginUser }) {
 
   const navigate = useNavigate();
 
+  /**Takes user credentials {username, password} and makes Api call
+   * to see if they have an account. If they do, updates Api token to that
+   * user's token, logs them in, and redirects to home. Otherwise, updates
+   * errors in state to display on login form.
+   */
+
   async function fetchUserToken(credentials){
     try {
       const token = await JoblyApi.signIn(credentials);
@@ -35,20 +41,14 @@ function LoginPage({ loginUser }) {
       const user = await JoblyApi.getUser(credentials.username);
       loginUser(user);
       navigate("/");
-      //TODO: add context here when you create context:
-      // loginUser(token); // or credentials.username
     } catch(error) {
       setErrors(error);
     }
   }
 
-  function handleSubmit(credentials){
-    fetchUserToken(credentials);
-  }
-
   return (
     <LoginForm
-      onSubmit={handleSubmit}
+      onSubmit={fetchUserToken}
       errors={errors}
     />
     );
