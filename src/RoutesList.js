@@ -23,7 +23,7 @@ import ProfilePage from './ProfilePage';
  */
 
 function RoutesList({ loginUser, loggedInUser }) {
-
+  //TODO: Add filtering for login/signup to not exist for logged-in users
   return (
     <Routes>
       <Route path="/login" element={<LoginPage loginUser={loginUser}/>} />
@@ -44,6 +44,5 @@ function RoutesList({ loginUser, loggedInUser }) {
 }
 
 // TODO: time permitting, refine extra routes for non-logged in user
-// Also: <></> ask about jsx fragments & if they're acceptable style-wise
 
 export default RoutesList;

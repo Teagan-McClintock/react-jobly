@@ -33,7 +33,7 @@ function LoginPage({ loginUser }) {
    * user's token, logs them in, and redirects to home. Otherwise, updates
    * errors in state to display on login form.
    */
-
+  //TODO: Rename to mention that this logs user in
   async function fetchUserToken(credentials){
     try {
       const token = await JoblyApi.signIn(credentials);
