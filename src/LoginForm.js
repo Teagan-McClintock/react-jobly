@@ -19,8 +19,8 @@ import { useState } from "react";
  */
 function LoginForm({ onSubmit, errors, defaultData }) {
   console.log("LoginForm rendered, props are onSubmit, errors, defaultData");
-  console.log("onSubmit:", onSubmit);
-  console.log("errors:", errors);
+  // console.log("onSubmit:", onSubmit);
+  // console.log("WANT TO SEE errors:", errors);
   console.log("defaultData", defaultData);
 
   const [formData, setFormData] = useState(defaultData);
@@ -39,8 +39,12 @@ function LoginForm({ onSubmit, errors, defaultData }) {
     onSubmit(formData);
   }
 
+  // TODO: examine errors to see if their display works as anticipated
+
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
+      {errors && <p>{errors}</p>}
+      {/* {errors && errors.map(error => <p>{error}</p>)} */}
       <label htmlFor="username">Username: </label>
       <input
         id="username"

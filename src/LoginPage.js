@@ -23,37 +23,36 @@ import { useState } from "react";
  */
 function LoginPage({ loginUser }) {
   console.log("LoginPage rendered, prop loginUser:", loginUser);
-  const [isLoading, setIsLoading] = useState(false);
-  const [userData, setUserData] = useState();
+
+  const [errors, setErrors] = useState()
 
   const navigate = useNavigate();
 
   async function fetchUserToken(credentials){
-    const token = await JoblyApi.signIn(credentials);
-    console.log("RESULT", token);
-    if (token){
+    try {
+      const token = await JoblyApi.signIn(credentials);
+      // console.log("RESULT", token);
       JoblyApi.token = token;
-      //Update context
       navigate("/");
-    }
-    else {
-      console.log("In ELSE");
-      return <LoginForm onSubmit={fetchUserToken}
-        errors={token.error.message}
-        defaultData={credentials}/>
+      //TODO: add context here when you create context:
+      // loginUser(token); // or credentials.username
+    } catch(error) {
+      setErrors(error);
     }
   }
 
   function handleSubmit(credentials){
-    setIsLoading(true);
     fetchUserToken(credentials);
-    setIsLoading(false);
   }
 
   return (
-    <LoginForm onSubmit={handleSubmit} defaultData={{username: "", password: ""}} />
-  )
+    <LoginForm
+      onSubmit={handleSubmit}
+      defaultData={{username: "", password: ""}}
+      errors={errors}
+    />
+    );
 
-}
+  }
 
-export default LoginPage;
+  export default LoginPage;
