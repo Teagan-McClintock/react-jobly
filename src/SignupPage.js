@@ -1,3 +1,5 @@
+import SignupForm from "./SignupForm";
+
 
 /**
  *  SignupPage takes a new user's inputs (from form) and attempts to register

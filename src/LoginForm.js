@@ -52,18 +52,18 @@ function LoginForm({ onSubmit, errors }) {
         placeholder="Enter a username"
         value={formData.username}
         onChange={handleChange}
-        />
+      />
 
       <label htmlFor="password">Password: </label>
       <input
         id="password"
         required
-        type="text"
+        type="password"
         name="password"
         placeholder="Enter a password"
         value={formData.password}
         onChange={handleChange}
-        />
+      />
       <button>Submit</button>
     </form>
 

@@ -5,7 +5,7 @@ import Homepage from './Homepage';
 import JobList from './JobList';
 import NotFoundPage from './NotFoundPage';
 import LoginPage from './LoginPage';
-import SignupPage from './SingupPage';
+import SignupPage from './SignupPage';
 import ProfilePage from './ProfilePage';
 
 /**RoutesList contains a list of routes
