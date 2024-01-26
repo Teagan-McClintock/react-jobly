@@ -18,6 +18,8 @@ import JoblyApi from './api';
  */
 
 function App() {
+  //make token live in state?
+  //make user updates change localstorage
   const [loggedInUser, setLoggedInUser] = useState(null);
 
   /**Updates state to add passed-in user as logged-in user */
