@@ -4,7 +4,8 @@ import userContext from "./userContext";
 import { Link } from "react-router-dom";
 
 /**
- *  Homepage shows slogan.
+ *  Homepage shows slogan and greeting to logged in users, links to login or
+ *    signup to anonymous users.
  *
  *  Props: none
  *

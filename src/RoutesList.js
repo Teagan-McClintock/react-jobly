@@ -8,14 +8,18 @@ import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import ProfilePage from './ProfilePage';
 
-/**RoutesList contains a list of routes
+/**RoutesList contains a list of routes, with more routes rendering if logged in
  *
- * props: loginUser (a function from App to pass to login/signup routes)
+ * props:
+ *  - loginUser (a function from App to pass to login/signup routes)
+ *  - loggedInUser (a user object from App used to validate whether signed in
+ *      or not)
  *
  * state: none
  *
  * renders:
- * App -> RoutesList -> {JobList, CompanyDetail, CompanyList, Homepage}
+ * App -> RoutesList -> {JobList, CompanyDetail, CompanyList, Homepage,
+ *                        ProfilePage, LoginPage, SignupPage, NotFoundPage}
  */
 
 function RoutesList({ loginUser, loggedInUser }) {
@@ -31,12 +35,9 @@ function RoutesList({ loginUser, loggedInUser }) {
           <Route path="/companies" element={<CompanyList />} />
           <Route path="/companies/:handle" element={<CompanyDetail />} />
           <Route path="/jobs" element={<JobList />} />
-          <Route path="/*" element={<NotFoundPage />} />
         </>
       }
-      {loggedInUser === null &&
-        <Route path="/*" element={<NotFoundPage />}/>
-      }
+      <Route path="/*" element={<NotFoundPage />} />
     </Routes>
   );
 

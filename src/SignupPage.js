@@ -6,7 +6,7 @@ import { useState } from "react";
 
 /**
  *  SignupPage takes a new user's inputs (from form) and attempts to register
- *  user. Makes call to Jobly API to register user.
+ *  user. Makes call to Jobly API to register user, then redirects to home.
  *
  *  Props:
  *    loginUser, a callback function that communicates to App component to
@@ -20,6 +20,7 @@ import { useState } from "react";
  *    RoutesList -> SignupPage -> SignupForm
  *
  */
+
 function SignupPage({ loginUser }) {
   console.log("Signup page rendered, prop loginUser:", loginUser);
 

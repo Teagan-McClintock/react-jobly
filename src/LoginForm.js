@@ -16,6 +16,7 @@ import { useState } from "react";
  *  Renders:
  *    LoginPage -> LoginForm
  */
+
 function LoginForm({ onSubmit, errors }) {
   console.log("LoginForm rendered, props are onSubmit, errors");
   // console.log("onSubmit:", onSubmit);
@@ -27,6 +28,7 @@ function LoginForm({ onSubmit, errors }) {
    *  When user changes a text input of one of the form fields, updates value
    *  for that key in formData state.
    */
+
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(currFormData => ({
@@ -39,6 +41,7 @@ function LoginForm({ onSubmit, errors }) {
    *  When user submits form, prevents default behaviour and sends formData
    *  to LoginPage for processing.
    */
+
   function handleSubmit(evt) {
     evt.preventDefault();
     onSubmit(formData);

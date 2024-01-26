@@ -22,6 +22,8 @@ import NotFoundPage from './NotFoundPage';
  *  Renders:
  *    RoutesList -> CompanyDetail -> JobCardList
  *
+ *  Authorization required: logged-in (handled in RoutesList)
+ *
  */
 
 function CompanyDetail() {

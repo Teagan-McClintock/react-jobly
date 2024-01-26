@@ -4,7 +4,8 @@ import { useContext } from "react";
 import userContext from "./userContext";
 
 /**Navigation stays on the top of the screen and contains links to
- *  homepage, JobList, and CompanyList
+ *  - homepage, JobList, CompanyList, Logout (for logged in users)
+ *  - homepage, Login, Signup (for anonymous users)
  *
  * props: logout (function to sign user out of app)
  *

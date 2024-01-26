@@ -20,6 +20,8 @@ import JoblyApi from "./api";
  *    RoutesList -> JobList -> JobCardList
  *    RoutesList -> JobList -> SearchForm
  *
+ *  Authorization required: logged-in (handled in RoutesList)
+ *
  */
 
 function JobList() {

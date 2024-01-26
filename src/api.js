@@ -84,42 +84,43 @@ class JoblyApi {
     let res = await this.request(`companies`, {nameLike: searchTerm});
     return res.companies;
   }
-  // take a look at the solution -- backend can handle one search function that
-  // can take what it's searching as another arg
+  // Code review note (for future reference): take a look at the solution --
+  // backend can handle one search function that can take what it's searching as
+  // another arg
 
-  /** Validate if user has an account, returning a token if validated and an
-   * error object {message, status} if not (we think)
+  /** Validate if user has an account, returning a token if validated and
+   * throwing an error if not
    * Takes an object {username, password} as an argument
    */
 
   static async signIn(userCredentials) {
     let res = await this.request(`auth/token`, userCredentials, "POST");
-    return res.token || res.error;
+    return res.token;
   }
 
-  /** Create a new user, returning a token if successful and an
-   * error object {message, status} if not (we think)
+  /** Create a new user, returning a token if successful and throwing an error
+   * if not
    * Takes an object {username, password, firstName, lastName, email} as an
    * argument
    */
 
   static async signUp(userInfo) {
     let res = await this.request(`auth/register`, userInfo, "POST");
-    return res.token || res.error;
+    return res.token;
   }
 
   /** Updates a user's data. Takes an object
    * {username, firstName, lastName, email} as an argument
-   * Returns user object or error if no such user*/
+   * Returns user object or throws error if no such user*/
 
   static async updateUser(userInfo) {
     let res = await this.request(
       `/users/${userInfo.username}`, userInfo, "PATCH");
-    return res.user || res.error;
+    return res.user;
   }
 
   /** Gets a user's data. Takes a username (string) as an argument
-   * Returns user object or error if no such user
+   * Returns user object or throws error if no such user
   */
 
   static async getUser(username) {

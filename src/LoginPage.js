@@ -6,7 +6,7 @@ import { useState } from "react";
 
 /**
  *  Processes user inputs (from form) and attempts to authenticate user
- *  information. Makes call to Jobly API to login user.
+ *  information. Makes call to Jobly API to login user and reroute to home.
  *
  *  Props:
  *    loginUser, a callback function that communicates to App component to
@@ -20,6 +20,7 @@ import { useState } from "react";
  *    RoutesList -> LoginPage -> LoginForm
  *
  */
+
 function LoginPage({ loginUser }) {
   console.log("LoginPage rendered, prop loginUser:", loginUser);
 
