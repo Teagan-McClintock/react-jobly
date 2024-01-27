@@ -22,7 +22,7 @@ function App() {
   //make user updates change localstorage
   const [loggedInUser, setLoggedInUser] = useState(null);
 
-  console.log("our beloved token", JoblyApi.token);
+  // console.log("our beloved token", JoblyApi.token);
 
   /**Updates state to add passed-in user as logged-in user */
 
@@ -61,21 +61,25 @@ function App() {
 
 
   /**
-   *  After first render, checks if user exists in localStorage. If it does,
-   *  then loggedInUser state gets updated to the contents of userFromStorage.
-  *
-  *  This is useful for cases where a logged-in-user edits the path in-url
-  *  so they can remain logged in.
-  */
- useEffect(function checkIfUserExistsInStorage() {
-   const userFromStorage = JSON.parse(localStorage.getItem('user'));
-   console.log("checkif user is in local storage rendered");
-   if (userFromStorage) {
-     setLoggedInUser(userFromStorage);
+   *  After first render, checks if user and token exist in localStorage. If
+   *  they do, then loggedInUser state gets updated to the contents of
+   *  userFromStorage and JoblyApi token is updated to tokenFromStorage.
+   *
+   *  This is useful for cases where a logged-in-user edits the path in-url
+   *  so they can remain logged in.
+   */
+
+  useEffect(function updateLoginInfoIfExistsInStorage() {
+    const userFromStorage = JSON.parse(localStorage.getItem('user'));
+    const tokenFromStorage = localStorage.getItem('token');
+    console.log("checkif user is in local storage rendered");
+    if (userFromStorage) {
+      setLoggedInUser(userFromStorage);
+    }
+    if (tokenFromStorage) {
+      JoblyApi.token = tokenFromStorage;
     }
   }, []);
-
-
 
   // this one must come after the null because:
   // this one will set it properly at the right time
@@ -87,6 +91,15 @@ function App() {
     localStorage.setItem('user', JSON.stringify(loggedInUser));
     console.log("new user set with useeffect that updates user");
   }, [loggedInUser]);
+
+  /**
+   *  After any time JoblyApi.token changes, sets localStorage's 'token' to
+   *  the value of JoblyApi.token.
+   */
+    useEffect(function addUserDataToLocalStorageOnLoginOrSignup() {
+      localStorage.setItem('token', JoblyApi.token);
+      console.log("new token set with useeffect that updates user");
+    }, [JoblyApi.token]);
 
   /**Updates state to clear logged-in user, and clears token from JoblyApi */
 
