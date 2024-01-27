@@ -7,6 +7,7 @@ import NotFoundPage from './NotFoundPage';
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import ProfilePage from './ProfilePage';
+import { Navigate } from 'react-router-dom';
 
 /**RoutesList contains a list of routes, with more routes rendering if logged in
  *
@@ -26,8 +27,6 @@ function RoutesList({ loginUser, signupUser, loggedInUser }) {
   //TODO: Add filtering for login/signup to not exist for logged-in users
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage loginUser={loginUser}/>} />
-      <Route path="/signup" element={<SignupPage signupUser={signupUser}/>} />
       <Route path="/" element={<Homepage />} />
       {loggedInUser &&
         <>
@@ -35,6 +34,19 @@ function RoutesList({ loginUser, signupUser, loggedInUser }) {
           <Route path="/companies" element={<CompanyList />} />
           <Route path="/companies/:handle" element={<CompanyDetail />} />
           <Route path="/jobs" element={<JobList />} />
+        </>
+      }
+      {!loggedInUser &&
+        <>
+          <Route path="/login" element={<LoginPage loginUser={loginUser} />} />
+          <Route
+            path="/signup"
+            element={<SignupPage signupUser={signupUser} />}
+          />
+          <Route path="/profile" element={<Navigate to="/signup" />} />
+          <Route path="/companies" element={<Navigate to="/signup" />} />
+          <Route path="/companies/*" element={<Navigate to="/signup" />} />
+          <Route path="/jobs" element={<Navigate to="/signup" />} />
         </>
       }
       <Route path="/*" element={<NotFoundPage />} />

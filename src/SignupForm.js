@@ -52,9 +52,11 @@ function SignupForm({ onSubmit, errors }) {
     onSubmit(formData);
   }
 
+  // TODO: Map with error text as key
+
   return (
     <form className="SignupForm" onSubmit={handleSubmit}>
-      {errors && errors.map(error => <p key={error}>{error}</p>)}
+    {errors && errors.map(error => <p key={error}>{error}</p>)}
 
       <label htmlFor="username">Username: </label>
       <input
