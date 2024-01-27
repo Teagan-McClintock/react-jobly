@@ -3,7 +3,7 @@ import RoutesList from './RoutesList';
 import Navigation from './Navigation';
 import { BrowserRouter } from "react-router-dom";
 import userContext from './userContext';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import JoblyApi from './api';
 
 /** App, renders Nav bar and routes and keeps loggedInUser in context
@@ -21,6 +21,8 @@ function App() {
   //make token live in state?
   //make user updates change localstorage
   const [loggedInUser, setLoggedInUser] = useState(null);
+
+  console.log("our beloved token", JoblyApi.token);
 
   /**Updates state to add passed-in user as logged-in user */
 
@@ -56,6 +58,35 @@ function App() {
       email: userInfo.email
     });
   }
+
+
+  /**
+   *  After first render, checks if user exists in localStorage. If it does,
+   *  then loggedInUser state gets updated to the contents of userFromStorage.
+  *
+  *  This is useful for cases where a logged-in-user edits the path in-url
+  *  so they can remain logged in.
+  */
+ useEffect(function checkIfUserExistsInStorage() {
+   const userFromStorage = JSON.parse(localStorage.getItem('user'));
+   console.log("checkif user is in local storage rendered");
+   if (userFromStorage) {
+     setLoggedInUser(userFromStorage);
+    }
+  }, []);
+
+
+
+  // this one must come after the null because:
+  // this one will set it properly at the right time
+  /**
+   *  After any time loggedInUser changes, sets localStorage's 'user' to
+   *  the contents of loggedInUser.
+   */
+  useEffect(function addUserDataToLocalStorageOnLoginOrSignup() {
+    localStorage.setItem('user', JSON.stringify(loggedInUser));
+    console.log("new user set with useeffect that updates user");
+  }, [loggedInUser]);
 
   /**Updates state to clear logged-in user, and clears token from JoblyApi */
 
